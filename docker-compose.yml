@@ -1,0 +1,19 @@
+version: '3'
+services:
+  lucee-builder:
+    build:
+      dockerfile: ./Dockerfile.builder
+      context: .
+      args:
+      - REPOSITORY=markdrew
+      - TOMCAT_VERSION=9.0
+      - TOMCAT_JAVA_VERSION=jdk8-openjdk
+      - TOMCAT_BASE_IMAGE=
+      - LUCEE_VERSION=5.3.7.47
+      - LUCEE_MINOR=5.3
+      - LUCEE_SERVER=
+      - LUCEE_VARIANT=-light
+      - LUCEE_SERVER=-nginx
+    privileged: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
